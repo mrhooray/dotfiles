@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+DOTFILES=~/.dotfiles
+
+rm -rf $DOTFILES && git clone https://github.com/mrhooray/dotfiles.git $DOTFILES
+
+for i in $(find $DOTFILES -mindepth 1 -maxdepth 1 ! -path '*.git' ! -path '*.gitignore' -iname '.*'); do
+    ln -sfF $i ~
+done

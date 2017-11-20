@@ -1,0 +1,29 @@
+[user]
+    name = Rui Hu
+    email = code@mrhooray.com
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    lf = log --color --graph --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+[push]
+    default = matching
+[core]
+    pager = "diff-so-fancy | less -R -+FX"
+[url "git@github.com:"]
+    insteadOf = https://github.com
+[branch]
+    autoSetupRebase = always
+[rerere]
+    enabled = true
+[diff]
+    compactionHeuristic = true
+[include]
+    path = ~/.local.gitconfig

@@ -1,0 +1,175 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" plug
+call plug#begin('~/.vim/plugged')
+" fs
+Plug 'airblade/vim-rooter'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+" nav
+Plug 'terryma/vim-multiple-cursors'
+Plug 'easymotion/vim-easymotion'
+" ui
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0ng/vim-hybrid'
+" lang
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'rust-lang/rust.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'fatih/vim-go'
+" misc
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'rking/ag.vim'
+Plug 'ntpeters/vim-better-whitespace'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+call plug#end()
+
+" basic
+syntax enable
+filetype plugin indent on
+set autoread
+set encoding=utf8
+set ffs=unix,dos,mac
+set clipboard=unnamed
+set history=500
+set backspace=eol,start,indent
+set hidden
+
+" interface
+set number
+set ruler
+set showcmd
+set showmatch
+set cursorline
+set scrolloff=7
+set laststatus=2
+set completeopt-=preview
+set matchtime=2
+
+" theme
+set background=dark
+colorscheme hybrid
+
+" search
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set magic
+
+" indent & tab
+set linebreak
+set autoindent
+set smartindent
+set wrap
+
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
+" backup
+set nobackup
+set nowb
+set noswapfile
+
+" sound
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" 120 line
+if exists("+colorcolumn")
+  set colorcolumn=120
+  highlight ColorColumn ctermbg=235
+endif
+
+" return to last edit position when opening files
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+
+" auto reload vim config after write
+autocmd! BufWritePost vimrc source %
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => key mapping
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <space> <leader>
+
+nmap q <Nop>
+nmap Q <Nop>
+nmap q: <Nop>
+
+nmap <leader>w :w!<cr>
+nmap <leader>r :edit!<cr>
+nmap <leader>v :e! ~/.vim/vimrc<cr>
+nmap <leader>ag :Ag!
+nmap <leader>p :set paste<cr>
+nmap <leader>pp :set nopaste<cr>
+nmap <leader>bn :bn<cr>
+nmap <leader>bp :bp<cr>
+
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-h> <c-w>h
+nmap <c-l> <c-w>l
+
+imap <c-h> <left>
+imap <c-j> <down>
+imap <c-k> <up>
+imap <c-l> <right>
+
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>tm :tabmove
+
+vnoremap . :norm.<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp
+let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_max_height=20
+let g:ctrlp_max_files=0
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" nerdtree
+map <leader>nt :NERDTree<cr>
+map <leader>nc :NERDTreeClose<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr>
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowHidden=1
+
+" vim-airline
+let g:airline_theme='badwolf'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+" vim-rooter
+let g:rooter_silent_chdir=1
+
+" vim-better-whitespace
+let g:strip_whitespace_on_save=1
+
+" vim-fugitive
+map <leader>gb :Gblame<cr>
+
+" vim-easymotion
+map <Leader>s <Plug>(easymotion-s)
