@@ -15,6 +15,7 @@
     ui = true
 [push]
     default = matching
+    followTags = true
 [core]
     pager = "diff-so-fancy | less -R -+FX"
 [url "git@github.com:"]
