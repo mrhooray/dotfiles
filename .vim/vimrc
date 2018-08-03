@@ -21,6 +21,8 @@ Plug 'mxw/vim-jsx'
 Plug 'rust-lang/rust.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 " misc
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
@@ -77,6 +79,7 @@ set tabstop=4
 
 autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
 autocmd Filetype json setlocal shiftwidth=2 tabstop=2
+autocmd Filetype typescript setlocal shiftwidth=2 tabstop=2
 
 " folding
 set foldmethod=indent
