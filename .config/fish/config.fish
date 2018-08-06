@@ -32,6 +32,10 @@ set -x PATH ~/.dotfiles/bin $PATH
 alias e $EDITOR
 alias l "ll -A"
 
+for f in (dirname (status -f))/langs/*.fish
+  source $f
+end
+
 if test -e ~/.local.fish
   source ~/.local.fish
 end
