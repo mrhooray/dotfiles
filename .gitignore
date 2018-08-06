@@ -1,6 +1,4 @@
 !.config/fish/
 !.config/git/
-.config
-.config/fish/fishd*
-.config/configstore/
+.config/
 .vim/plugged/
