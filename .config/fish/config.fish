@@ -32,22 +32,6 @@ set -x PATH ~/.dotfiles/bin $PATH
 alias e $EDITOR
 alias l "ll -A"
 
-function edit_command_line
-  set -l f (mktemp /tmp/fish.cmd.XXXXXXXX)
-  if test -n "$f"
-    set -l p (commandline -C)
-    commandline -b > $f
-    e $f
-    commandline -r (more $f)
-    commandline -C $p
-    command rm $f
-  end
-end
-
-function fish_user_key_bindings
-  bind \cx\ce edit_command_line
-end
-
 if test -e ~/.local.fish
   source ~/.local.fish
 end
