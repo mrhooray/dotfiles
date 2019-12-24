@@ -16,21 +16,21 @@ defaults write com.apple.controlstrip FullCustomized -array \
     com.apple.system.group.volume \
     NSTouchBarItemIdentifierFlexibleSpace \
     com.apple.system.screen-lock
-killall ControlStrip
 
 # finder
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-defaults write com.apple.finder NewWindowTarget -string "PfHm"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads"
 defaults write com.apple.finder QuitMenuItem -bool false
 defaults write com.apple.finder ShowPathbar -bool true
 
 # dock
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock minimize-to-application -bool true
+defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 36
 
 # misc
@@ -44,7 +44,14 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.dock wvous-bl-corner -int 10
 defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  H:mm"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 5
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+# restart apps
+killall cfprefsd
+killall ControlStrip
+killall Dock
+killall Finder
+killall SystemUIServer
