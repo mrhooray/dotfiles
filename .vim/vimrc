@@ -24,6 +24,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'fatih/vim-go'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'blankname/vim-fish'
 " misc
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
