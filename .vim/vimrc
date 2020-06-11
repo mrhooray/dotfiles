@@ -132,10 +132,15 @@ nmap <leader>pp :set nopaste<cr>
 nmap <leader>bn :bn<cr>
 nmap <leader>bp :bp<cr>
 
+nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
-nmap <c-h> <c-w>h
 nmap <c-l> <c-w>l
+
+nmap <left> <c-w>h
+nmap <down> <c-w>j
+nmap <up> <c-w>k
+nmap <right> <c-w>l
 
 imap <c-h> <left>
 imap <c-j> <down>
