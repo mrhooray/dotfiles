@@ -1,4 +1,10 @@
 ----------------------------------------------------
+-- reload
+----------------------------------------------------
+hs.hotkey.bind({"cmd", "ctrl"}, "r", function()
+  hs.reload()
+end)
+----------------------------------------------------
 -- remap arrow keys
 ----------------------------------------------------
 local function pressFn(mods, key)
@@ -53,7 +59,6 @@ remap({'ctrl', 'cmd', 'alt', 'shift'}, 'h', pressFn({'cmd', 'alt', 'shift'}, 'le
 remap({'ctrl', 'cmd', 'alt', 'shift'}, 'j', pressFn({'cmd', 'alt', 'shift'}, 'down'))
 remap({'ctrl', 'cmd', 'alt', 'shift'}, 'k', pressFn({'cmd', 'alt', 'shift'}, 'up'))
 remap({'ctrl', 'cmd', 'alt', 'shift'}, 'l', pressFn({'cmd', 'alt', 'shift'}, 'right'))
-
 ----------------------------------------------------
 -- swap backspace and backslash
 ----------------------------------------------------
@@ -74,7 +79,6 @@ hs.eventtap.new(
     return false
   end
 ):start()
-
 ----------------------------------------------------
 -- caffeine
 ----------------------------------------------------
