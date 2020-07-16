@@ -108,3 +108,12 @@ if caffeine then
     caffeine:setClickCallback(caffeineClicked)
     setCaffeineDisplay(hs.caffeinate.get('displayIdle'))
 end
+----------------------------------------------------
+-- low battery alert
+----------------------------------------------------
+hs.timer.doEvery(60, function ()
+  local pct = hs.battery.percentage()
+  if pct <= 10 then
+    hs.alert.show('low battery ' .. pct .. '%')
+  end
+end);
