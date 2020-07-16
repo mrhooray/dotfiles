@@ -66,7 +66,7 @@ remap({'cmd'}, 'escape', press({'cmd'}, '`'))
 ----------------------------------------------------
 -- swap backspace and backslash
 ----------------------------------------------------
-hs.eventtap.new(
+local tap = hs.eventtap.new(
   {hs.eventtap.event.types.keyDown},
   function(event)
     -- type of macbook internal keyboard
@@ -83,10 +83,15 @@ hs.eventtap.new(
     return false
   end
 ):start()
+hs.timer.doEvery(4, function ()
+  if not tap:isEnabled() then
+    tap:start()
+  end
+end);
 ----------------------------------------------------
 -- caffeine
 ----------------------------------------------------
-caffeine = hs.menubar.new()
+local caffeine = hs.menubar.new()
 local function setCaffeineDisplay(state)
     if state then
         caffeine:setTitle('+')
