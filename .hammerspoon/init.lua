@@ -1,12 +1,8 @@
 ----------------------------------------------------
--- reload
+-- utilities
 ----------------------------------------------------
-hs.hotkey.bind({"cmd", "ctrl"}, "r", function()
-  hs.reload()
-end)
-----------------------------------------------------
--- remap arrow keys
-----------------------------------------------------
+local logger = hs.logger.new('dotfiles','info')
+
 local function press(mods, key)
   if key == nil then
     key = mods
@@ -19,7 +15,15 @@ end
 local function remap(mods, key, press)
   hs.hotkey.bind(mods, key, press, nil, press)
 end
-
+----------------------------------------------------
+-- reload
+----------------------------------------------------
+hs.hotkey.bind({"cmd", "ctrl"}, "r", function()
+  hs.reload()
+end)
+----------------------------------------------------
+-- remap arrow keys
+----------------------------------------------------
 remap({'ctrl'}, 'h', press('left'))
 remap({'ctrl'}, 'j', press('down'))
 remap({'ctrl'}, 'k', press('up'))
@@ -66,7 +70,7 @@ remap({'cmd'}, 'escape', press({'cmd'}, '`'))
 ----------------------------------------------------
 -- swap backspace and backslash
 ----------------------------------------------------
-local tap = hs.eventtap.new(
+local keyboardEventTap = hs.eventtap.new(
   {hs.eventtap.event.types.keyDown},
   function(event)
     -- type of macbook internal keyboard
@@ -83,11 +87,16 @@ local tap = hs.eventtap.new(
     return false
   end
 ):start()
-hs.timer.doEvery(4, function ()
-  if not tap:isEnabled() then
-    tap:start()
+----------------------------------------------------
+-- low battery alert
+----------------------------------------------------
+local lowBatteryTimer = hs.timer.doEvery(60, function()
+  local pct = hs.battery.percentage()
+  logger.i('battery level ' .. pct .. '%')
+  if pct <= 25 then
+    hs.alert.show('low battery ' .. pct .. '%')
   end
-end);
+end)
 ----------------------------------------------------
 -- caffeine
 ----------------------------------------------------
@@ -109,11 +118,9 @@ if caffeine then
     setCaffeineDisplay(hs.caffeinate.get('displayIdle'))
 end
 ----------------------------------------------------
--- low battery alert
+-- watcher
 ----------------------------------------------------
-hs.timer.doEvery(60, function ()
-  local pct = hs.battery.percentage()
-  if pct <= 10 then
-    hs.alert.show('low battery ' .. pct .. '%')
-  end
-end);
+hs.caffeinate.watcher.new(function(_)
+  keyboardEventTap:start()
+  lowBatteryTimer:start()
+end):start()
