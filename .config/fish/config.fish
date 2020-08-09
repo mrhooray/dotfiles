@@ -28,6 +28,7 @@ set -x EDITOR vim
 set -x HOMEBREW_CASK_OPTS --appdir=/Applications
 set -x LSCOLORS Gxfxcxdxbxegedabagacad
 set -x PATH ~/.dotfiles/bin $PATH
+set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 
 alias e $EDITOR
 alias l "ll -A"
