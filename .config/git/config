@@ -18,8 +18,6 @@
     followTags = true
 [core]
     pager = "diff-so-fancy | less -R -+FX"
-[url "git@github.com:"]
-    insteadOf = https://github.com
 [branch]
     autoSetupRebase = always
 [rerere]
