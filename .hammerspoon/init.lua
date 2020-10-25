@@ -68,26 +68,6 @@ remap({'ctrl', 'cmd', 'alt', 'shift'}, 'l', press({'cmd', 'alt', 'shift'}, 'righ
 ----------------------------------------------------
 remap({'cmd'}, 'escape', press({'cmd'}, '`'))
 ----------------------------------------------------
--- swap backspace and backslash
-----------------------------------------------------
-local keyboardEventTap = hs.eventtap.new(
-  {hs.eventtap.event.types.keyDown},
-  function(event)
-    -- type of macbook internal keyboard
-    if event:getProperty(hs.eventtap.event.properties.keyboardEventKeyboardType) == 58 then
-      if event:getKeyCode() == hs.keycodes.map['delete'] then
-        event:setKeyCode(hs.keycodes.map['\\'])
-        return false
-      end
-      if event:getKeyCode() == hs.keycodes.map['\\'] then
-        event:setKeyCode(hs.keycodes.map['delete'])
-        return false
-      end
-    end
-    return false
-  end
-):start()
-----------------------------------------------------
 -- low battery alert
 ----------------------------------------------------
 local lowBatteryTimer = hs.timer.doEvery(60, function()
