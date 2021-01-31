@@ -24,10 +24,10 @@ set -U fish_pager_color_description 555 yellow
 set -U fish_pager_color_prefix cyan
 set -U fish_pager_color_progress cyan
 
-set -x EDITOR vim
+set -x EDITOR "emacsclient -a '' -c"
 set -x HOMEBREW_CASK_OPTS --appdir=/Applications
 set -x LSCOLORS Gxfxcxdxbxegedabagacad
-set -x PATH ~/.dotfiles/bin $PATH
+set -x PATH ~/.emacs.d/bin ~/.dotfiles/bin $PATH
 set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 
 alias e $EDITOR
