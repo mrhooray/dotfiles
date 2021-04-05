@@ -32,6 +32,7 @@ set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 
 alias e $EDITOR
 alias l "ll -A"
+alias g "lazygit"
 
 for f in (dirname (status -f))/langs/*.fish
   source $f
