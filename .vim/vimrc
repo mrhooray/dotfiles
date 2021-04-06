@@ -6,10 +6,12 @@ call plug#begin('~/.vim/plugged')
 " fs
 Plug 'airblade/vim-rooter'
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " nav
 Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
+Plug 'andymass/vim-matchup'
 " ui
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -20,12 +22,16 @@ Plug 'pangloss/vim-javascript'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 Plug 'blankname/vim-fish'
+" edit
+Plug 'dense-analysis/ale'
+Plug 'preservim/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ntpeters/vim-better-whitespace'
 " misc
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 " basic
@@ -118,11 +124,12 @@ nmap q: <Nop>
 
 nmap <leader>w :w!<cr>
 nmap <leader>r :edit!<cr>
-nmap <leader>v :e! ~/.vim/vimrc<cr>
+nmap <leader>v :e! ~/.dotfiles/.vim/vimrc<cr>
 nmap <leader>p :set paste<cr>
 nmap <leader>pp :set nopaste<cr>
 nmap <leader>bn :bn<cr>
 nmap <leader>bp :bp<cr>
+nmap <leader>t :terminal<cr>
 
 nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
@@ -149,11 +156,10 @@ vnoremap . :norm.<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_max_height=20
-let g:ctrlp_max_files=0
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" fzf.vim
+map <c-p> :Files<cr>
+map <leader>f :Rg<cr>
+map <leader>b :Buffers<cr>
 
 " nerdtree
 map <leader>nt :NERDTree<cr>

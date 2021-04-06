@@ -29,6 +29,8 @@ set -x HOMEBREW_CASK_OPTS --appdir=/Applications
 set -x LSCOLORS Gxfxcxdxbxegedabagacad
 set -x PATH ~/.dotfiles/bin $PATH
 set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+set -x FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
+set -x FZF_DEFAULT_OPTS '-m --height 50% --border'
 
 alias e $EDITOR
 alias l "ll -A"
