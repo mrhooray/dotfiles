@@ -6,8 +6,8 @@
     ci = commit
     st = status
     br = branch
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-    lf = log --color --graph --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr | %cs)%Creset %C(white)<%an>%Creset'
+    lf = log --color --graph --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr | %cs)%Creset %C(white)<%an>%Creset'
 [color]
     diff = auto
     status = auto
