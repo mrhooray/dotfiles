@@ -34,7 +34,7 @@ set -x FZF_DEFAULT_OPTS '-m --height 50% --border'
 
 alias e $EDITOR
 alias l "ll -A"
-alias g "lazygit"
+alias g "lazygit -ucd ~/.config/lazygit/"
 
 for f in (dirname (status -f))/langs/*.fish
   source $f
