@@ -36,7 +36,8 @@ call plug#end()
 
 " basic
 syntax enable
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 set autoread
 set encoding=utf8
 set ffs=unix,dos,mac
@@ -44,6 +45,7 @@ set clipboard=unnamed
 set history=500
 set backspace=eol,start,indent
 set hidden
+set nocompatible
 
 " interface
 set number
@@ -55,6 +57,7 @@ set scrolloff=7
 set laststatus=2
 set completeopt-=preview
 set matchtime=2
+set wildmenu
 
 " theme
 set background=dark
@@ -136,11 +139,6 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
-nmap <left> <c-w>h
-nmap <down> <c-w>j
-nmap <up> <c-w>k
-nmap <right> <c-w>l
-
 imap <c-h> <left>
 imap <c-j> <down>
 imap <c-k> <up>
@@ -158,7 +156,7 @@ vnoremap . :norm.<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf.vim
 map <c-p> :Files<cr>
-map <leader>f :Rg<cr>
+map <leader>s :Rg<cr>
 map <leader>b :Buffers<cr>
 
 " nerdtree
@@ -184,7 +182,7 @@ let g:strip_whitespace_on_save=1
 map <leader>gb :Gblame<cr>
 
 " vim-easymotion
-map <Leader>s <Plug>(easymotion-s)
+map <Leader>j <Plug>(easymotion-s)
 
 " vim-multiple-cursors
 let g:multi_cursor_exit_from_visual_mode=1
