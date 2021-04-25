@@ -31,10 +31,13 @@ set -x PATH ~/.dotfiles/bin $PATH
 set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 set -x FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
 set -x FZF_DEFAULT_OPTS '-m --height 50% --border'
+set -x NNN_COLORS '#a744b322'
+set -x NNN_FCOLORS 'c1e2ff6ff36dccf7c6e3aba1'
 
 alias e $EDITOR
-alias l "ll -A"
-alias g "lazygit -ucd ~/.config/lazygit/"
+alias l 'll -A'
+alias g 'lazygit -ucd ~/.config/lazygit/'
+alias nnn 'nnn -dHo'
 
 for f in (dirname (status -f))/langs/*.fish
   source $f
