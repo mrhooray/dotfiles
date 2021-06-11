@@ -24,15 +24,15 @@ set -U fish_pager_color_description 555 yellow
 set -U fish_pager_color_prefix cyan
 set -U fish_pager_color_progress cyan
 
-set -x EDITOR vim
-set -x HOMEBREW_CASK_OPTS --appdir=/Applications
-set -x LSCOLORS Gxfxcxdxbxegedabagacad
-set -x PATH ~/.dotfiles/bin $PATH
-set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
-set -x FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
-set -x FZF_DEFAULT_OPTS '-m --height 50% --border'
-set -x NNN_COLORS '#a744b322'
-set -x NNN_FCOLORS 'c1e2ff6ff36dccf7c6e3aba1'
+set -gx EDITOR vim
+set -gx HOMEBREW_CASK_OPTS --appdir=/Applications
+set -gx LSCOLORS Gxfxcxdxbxegedabagacad
+set -gx PATH ~/.dotfiles/bin $PATH
+set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+set -gx FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
+set -gx FZF_DEFAULT_OPTS '-m --height 50% --border'
+set -gx NNN_COLORS '#a744b322'
+set -gx NNN_FCOLORS 'c1e2ff6ff36dccf7c6e3aba1'
 
 alias e $EDITOR
 alias l 'll -A'
