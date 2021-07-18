@@ -39,6 +39,10 @@ alias l 'll -A'
 alias g 'lazygit -ucd ~/.config/lazygit/'
 alias nnn 'nnn -dHo'
 
+if type -q starship
+  starship init fish | source
+end
+
 for f in (dirname (status -f))/langs/*.fish
   source $f
 end
