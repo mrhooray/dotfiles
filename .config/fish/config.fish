@@ -27,7 +27,7 @@ set -U fish_pager_color_progress cyan
 set -gx EDITOR vim
 set -gx HOMEBREW_CASK_OPTS --appdir=/Applications
 set -gx LSCOLORS Gxfxcxdxbxegedabagacad
-set -gx PATH ~/.dotfiles/bin $PATH
+set -gx PATH ~/.dotfiles/bin /opt/homebrew/bin $PATH
 set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 set -gx FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
 set -gx FZF_DEFAULT_OPTS '-m --height 50% --border'
