@@ -195,7 +195,7 @@ let g:rooter_silent_chdir=1
 let g:strip_whitespace_on_save=1
 
 " vim-fugitive
-map <leader>gb :Gblame<cr>
+map <leader>gb :Git blame<cr>
 
 " vim-easymotion
 map <Leader>j <Plug>(easymotion-s)
