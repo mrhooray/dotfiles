@@ -33,6 +33,21 @@ remap({'alt'}, 'l', press('right'))
 ----------------------------------------------------
 remap({'cmd'}, 'escape', press({'cmd'}, '`'))
 ----------------------------------------------------
+-- keymap for media control
+----------------------------------------------------
+hs.hotkey.bind({"alt"}, "z", function()
+  hs.eventtap.event.newSystemKeyEvent('PREVIOUS', true):post()
+  hs.eventtap.event.newSystemKeyEvent('PREVIOUS', false):post()
+end)
+hs.hotkey.bind({"alt"}, "x", function()
+  hs.eventtap.event.newSystemKeyEvent('PLAY', true):post()
+  hs.eventtap.event.newSystemKeyEvent('PLAY', false):post()
+end)
+hs.hotkey.bind({"alt"}, "c", function()
+  hs.eventtap.event.newSystemKeyEvent('NEXT', true):post()
+  hs.eventtap.event.newSystemKeyEvent('NEXT', false):post()
+end)
+----------------------------------------------------
 -- low battery alert
 ----------------------------------------------------
 local lowBatteryTimer = hs.timer.doEvery(60, function()
