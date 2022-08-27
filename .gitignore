@@ -1,5 +1,7 @@
-.config/configstore
+.config/configstore/
+.config/containers/
 .config/fish/fish_variables
-.config/lazygit/state.yml
+.config/gcloud/
 .config/iterm2/
+.config/lazygit/state.yml
 .vim/plugged/
