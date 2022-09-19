@@ -24,7 +24,7 @@ set -U fish_pager_color_description 555 yellow
 set -U fish_pager_color_prefix cyan
 set -U fish_pager_color_progress cyan
 
-set -gx EDITOR vim
+set -gx EDITOR nvim
 set -gx HOMEBREW_CASK_OPTS --appdir=/Applications
 set -gx LSCOLORS Gxfxcxdxbxegedabagacad
 set -gx PATH ~/.dotfiles/bin /opt/homebrew/bin $PATH
