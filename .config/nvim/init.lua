@@ -102,6 +102,7 @@ require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
   use('nvim-lua/plenary.nvim')
   use('ahmedkhalf/project.nvim')
+  use('akinsho/toggleterm.nvim')
 
   use('mg979/vim-visual-multi')
   use('windwp/nvim-autopairs')
@@ -142,6 +143,27 @@ vim.keymap.set('n', '<leader>ps', ':PackerSync<cr>', km_opts)
 
 -- project
 require('project_nvim').setup()
+
+-- toggleterm
+require('toggleterm').setup({
+  open_mapping = [[<c-\>]],
+  hide_numbers = true,
+  start_in_insert = true,
+  insert_mappings = true,
+  persist_size = true,
+  direction = 'float',
+  close_on_exit = true,
+  shell = vim.o.shell,
+})
+
+function _G.set_terminal_keymaps()
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], km_opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], km_opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], km_opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], km_opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- nvim-tree
 require('nvim-tree').setup({
