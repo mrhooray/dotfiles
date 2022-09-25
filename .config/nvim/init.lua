@@ -106,6 +106,8 @@ require('packer').startup(function(use)
   use('mg979/vim-visual-multi')
   use('windwp/nvim-autopairs')
   use('cappyzawa/trim.nvim')
+
+  use('ggandor/lightspeed.nvim')
   use('ethanholz/nvim-lastplace')
 
   use({ 'catppuccin/nvim', as = 'catppuccin' })
@@ -162,6 +164,9 @@ require('nvim-autopairs').setup()
 
 -- trim
 require('trim').setup({ disable = { 'markdown' } })
+
+-- lightspeed
+require('lightspeed').setup({ ignore_case = true })
 
 -- lastplace
 require('nvim-lastplace').setup()
