@@ -19,6 +19,8 @@
   pager = "diff-so-fancy | less -R -+FX"
 [diff]
   compactionHeuristic = true
+[interactive]
+  diffFilter = diff-so-fancy --patch
 [pull]
   rebase = true
   ff = only
