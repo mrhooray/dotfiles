@@ -111,7 +111,7 @@ require('packer').startup(function(use)
   use('ggandor/lightspeed.nvim')
   use('ethanholz/nvim-lastplace')
 
-  use({ 'catppuccin/nvim', as = 'catppuccin' })
+  use('Mofiqul/dracula.nvim')
   use('nvim-lualine/lualine.nvim')
   use('lewis6991/gitsigns.nvim')
 
@@ -193,10 +193,8 @@ require('lightspeed').setup({ ignore_case = true })
 -- lastplace
 require('nvim-lastplace').setup()
 
--- catppuccin
-vim.g.catppuccin_flavour = 'mocha'
-require('catppuccin').setup()
-vim.cmd('colorscheme catppuccin')
+-- dracula
+vim.cmd('colorscheme dracula')
 
 -- lualine
 require('lualine').setup({ theme = 'auto' })
