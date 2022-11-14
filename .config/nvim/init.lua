@@ -276,13 +276,13 @@ local lsp_settings = {
     },
   },
 }
-local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lsp_on_attach = function(client, bufnr)
   local disable_formatting = { 'tsserver', 'sumneko_lua' }
   for _, v in ipairs(disable_formatting) do
     if v == client.name then
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
     end
   end
 
@@ -335,7 +335,7 @@ require('null-ls').setup({
   },
   on_attach = function(client)
     local au_auto_format = vim.api.nvim_create_augroup('au_auto_format', { clear = true })
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
       vim.api.nvim_create_autocmd('BufWritePre', {
         pattern = '<buffer>',
         group = au_auto_format,
