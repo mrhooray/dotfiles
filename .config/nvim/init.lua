@@ -260,7 +260,7 @@ vim.keymap.set('n', '<leader>sd', ts_builtin.diagnostics, { desc = '[S]earch [D]
 local lsp_lua_runtime_path = vim.split(package.path, ';')
 table.insert(lsp_lua_runtime_path, 'lua/?.lua')
 table.insert(lsp_lua_runtime_path, 'lua/?/init.lua')
-local lsp_servers = { 'rust_analyzer', 'tsserver', 'sumneko_lua' }
+local lsp_servers = { 'sumneko_lua', 'tsserver', 'rust_analyzer', 'gopls' }
 local lsp_settings = {
   sumneko_lua = {
     Lua = {
@@ -278,8 +278,7 @@ local lsp_settings = {
 }
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lsp_on_attach = function(client, bufnr)
-  local disable_formatting = { 'tsserver', 'sumneko_lua' }
-  for _, v in ipairs(disable_formatting) do
+  for _, v in ipairs(lsp_servers) do
     if v == client.name then
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
@@ -332,6 +331,8 @@ require('null-ls').setup({
   sources = {
     require('null-ls').builtins.formatting.stylua,
     require('null-ls').builtins.formatting.prettier,
+    require('null-ls').builtins.formatting.rustfmt,
+    require('null-ls').builtins.formatting.goimports,
   },
   on_attach = function(client)
     local au_auto_format = vim.api.nvim_create_augroup('au_auto_format', { clear = true })
@@ -350,7 +351,7 @@ vim.keymap.set('n', '<leader>li', ':LspInfo<cr>', km_opts)
 
 -- treesitter
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'javascript', 'lua', 'rust' },
+  ensure_installed = { 'lua', 'javascript', 'rust', 'go' },
   ignore_install = {},
   highlight = {
     enable = true,
