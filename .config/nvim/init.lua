@@ -340,7 +340,7 @@ require('null-ls').setup({
       vim.api.nvim_create_autocmd('BufWritePre', {
         pattern = '<buffer>',
         group = au_auto_format,
-        callback = vim.lsp.buf.formatting_sync,
+        callback = vim.lsp.buf.format,
       })
     end
   end,
