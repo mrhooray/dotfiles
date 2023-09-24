@@ -185,7 +185,7 @@ vim.keymap.set('n', '<leader>tf', ':NvimTreeFindFile<cr>', km_opts)
 require('nvim-autopairs').setup()
 
 -- trim
-require('trim').setup({ disable = { 'markdown' } })
+require('trim').setup({ ft_blocklist = { 'markdown' } })
 
 -- lightspeed
 require('lightspeed').setup({ ignore_case = true })
@@ -260,9 +260,9 @@ vim.keymap.set('n', '<leader>sd', ts_builtin.diagnostics, { desc = '[S]earch [D]
 local lsp_lua_runtime_path = vim.split(package.path, ';')
 table.insert(lsp_lua_runtime_path, 'lua/?.lua')
 table.insert(lsp_lua_runtime_path, 'lua/?/init.lua')
-local lsp_servers = { 'sumneko_lua', 'tsserver', 'rust_analyzer', 'gopls' }
+local lsp_servers = { 'lua_ls', 'tsserver', 'rust_analyzer', 'gopls' }
 local lsp_settings = {
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       runtime = {
         version = 'LuaJIT',
