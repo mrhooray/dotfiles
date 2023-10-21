@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
-DOTFILES=~/.dotfiles
+DOTFILES=$HOME/.dotfiles
+XDG_CONFIG_HOME=$HOME/.config
 
-rm -rf $DOTFILES && git clone https://github.com/mrhooray/dotfiles.git $DOTFILES
+if [ ! -d $DOTFILES ]; then
+  git clone https://github.com/mrhooray/dotfiles.git $DOTFILES
+fi
 
 for i in $(find $DOTFILES -mindepth 1 -maxdepth 1 ! -path '*.git' ! -path '*.gitignore' -iname '.*'); do
-    ln -sfF $i ~
+    ln -sfF $i $HOME
+done
+
+mkdir -p $XDG_CONFIG_HOME
+for i in $(find $DOTFILES/config -mindepth 1 -maxdepth 1 -iname '*'); do
+  ln -sfF $i $XDG_CONFIG_HOME
 done

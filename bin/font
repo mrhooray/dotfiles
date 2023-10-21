@@ -1,5 +1,5 @@
 #!/bin/bash
-font_src_dir=$( cd "$( dirname "$0" )" && pwd )
+font_src_dir="$HOME/.dotfiles/font"
 find_command="find \"$font_src_dir\" \( -name '*.[o,t]tf' -or -name '*.pcf.gz' \) -type f -print0"
 
 if [[ `uname` == 'Darwin' ]]; then

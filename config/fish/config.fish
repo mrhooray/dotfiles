@@ -24,10 +24,14 @@ set -U fish_pager_color_description 555 yellow
 set -U fish_pager_color_prefix cyan
 set -U fish_pager_color_progress cyan
 
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx EDITOR nvim
-set -gx HOMEBREW_CASK_OPTS --appdir=/Applications
 set -gx LSCOLORS Gxfxcxdxbxegedabagacad
-set -gx PATH ~/.dotfiles/bin /opt/homebrew/bin $PATH
+set -gx PATH $HOME/.dotfiles/bin $PATH
+
 set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 set -gx FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
 set -gx FZF_DEFAULT_OPTS '-m --height 50% --border'
@@ -36,17 +40,28 @@ set -gx NNN_FCOLORS 'c1e2ff6ff36dccf7c6e3aba1'
 
 alias e $EDITOR
 alias l 'll -A'
-alias g 'lazygit -ucd ~/.config/lazygit/'
+alias g 'lazygit -ucd $HOME/.config/lazygit/'
 alias nnn 'nnn -dHo'
 
-if type -q starship
-  starship init fish | source
+function source_by_unix
+  switch (uname)
+    case Linux
+      source (string replace -r '.fish$' '\-linux.fish' (status -f))
+    case Darwin
+      source (string replace -r '.fish$' '\-darwin.fish' (status -f))
+  end
+end
+
+source_by_unix
+
+if test -e $HOME/.local.fish
+  source $HOME/.local.fish
 end
 
 for f in (dirname (status -f))/langs/*.fish
   source $f
 end
 
-if test -e ~/.local.fish
-  source ~/.local.fish
+if type -q starship
+  starship init fish | source
 end

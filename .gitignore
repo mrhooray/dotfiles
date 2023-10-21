@@ -1,1 +1,5 @@
-.config/
+config/fish/fish_variables
+config/hammerspoon/Spoons
+config/lazygit/state.yml
+config/nvim/.luarc.json
+config/nvim/plugin/
