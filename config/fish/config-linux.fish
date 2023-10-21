@@ -1,1 +1,1 @@
-set -gx XDG_RUNTIME_DIR /run/user/$UID
+set -gx XDG_RUNTIME_DIR /run/user/(id -u)

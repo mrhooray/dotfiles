@@ -30,6 +30,9 @@ bind "set show-all-if-ambiguous on"
 
 ## SANE HISTORY DEFAULTS ##
 
+# Use XDG base directory for history
+export HISTFILE="${XDG_STATE_HOME}/bash_history"
+
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -37,7 +40,7 @@ shopt -s histappend
 shopt -s cmdhist
 
 # Record each line as it gets issued
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND="history -a"
 
 # Across instances
 # PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
@@ -53,7 +56,7 @@ HISTCONTROL="erasedups:ignoreboth"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # Useful timestamp format
-HISTTIMEFORMAT='%F %T '
+HISTTIMEFORMAT="%F %T "
 
 # Enable incremental history search with up/down arrows (also Readline goodness)
 # Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
