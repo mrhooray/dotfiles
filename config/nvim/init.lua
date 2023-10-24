@@ -78,7 +78,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 local au_file_reload = vim.api.nvim_create_augroup('au_file_reload', { clear = true })
-vim.api.nvim_create_autocmd('FocusGained,BufEnter,CursorHold,CursorHoldI', {
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
   command = 'if mode() != "c" | checktime | endif',
   group = au_file_reload,
   pattern = '*',
