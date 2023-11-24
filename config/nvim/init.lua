@@ -114,6 +114,7 @@ require('packer').startup(function(use)
   use('Mofiqul/dracula.nvim')
   use('nvim-lualine/lualine.nvim')
   use('lewis6991/gitsigns.nvim')
+  use('braxtons12/blame_line.nvim')
 
   use('kyazdani42/nvim-tree.lua')
   use({ 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } })
