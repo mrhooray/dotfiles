@@ -207,6 +207,10 @@ require('lualine').setup({ theme = 'auto' })
 -- gitsigns
 require('gitsigns').setup()
 
+-- blame_line
+require("blame_line").disable()
+vim.keymap.set('n', '<leader>gb', ':BlameLineToggle<cr>', km_opts)
+
 -- telescope
 local ts_actions = require('telescope.actions')
 local ts_builtin = require('telescope.builtin')
