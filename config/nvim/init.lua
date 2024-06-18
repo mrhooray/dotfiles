@@ -63,6 +63,10 @@ vim.keymap.set('n', '<C-h>', '<C-w>h', km_opts)
 vim.keymap.set('n', '<C-j>', '<C-w>j', km_opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', km_opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', km_opts)
+vim.keymap.set('c', '<C-f>', '<Right>', km_opts)
+vim.keymap.set('c', '<C-b>', '<Left>', km_opts)
+vim.keymap.set('c', '<C-a>', '<Home>', km_opts)
+vim.keymap.set('c', '<C-e>', '<End>', km_opts)
 
 vim.keymap.set('v', 'p', '"_dP', km_opts)
 
@@ -79,7 +83,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 local au_file_reload = vim.api.nvim_create_augroup('au_file_reload', { clear = true })
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
-  command = 'if mode() != "c" | checktime | endif',
+  command = 'if mode() != "c" | silent! checktime | endif',
   group = au_file_reload,
   pattern = '*',
 })
