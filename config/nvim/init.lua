@@ -76,7 +76,7 @@ vim.keymap.set('v', '>', '>gv', km_opts)
 -- autocmd
 local au_config_reload = vim.api.nvim_create_augroup('au_config_reload', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | PackerSync',
+  command = 'source <afile>',
   group = au_config_reload,
   pattern = vim.fn.expand('$MYVIMRC'),
 })
