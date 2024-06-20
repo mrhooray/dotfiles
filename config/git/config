@@ -8,19 +8,19 @@
   br = branch
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr | %cs)%Creset %C(white)<%an>%Creset'
   lf = log --color --graph --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr | %cs)%Creset %C(white)<%an>%Creset'
+[core]
+  pager = delta 
+[diff]
+  colorMoved = default
+[delta]
+  line-numbers = true
+  navigate = true
+[interactive]
+  diffFilter = delta --color-only
 [branch]
   autoSetupRebase = always
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  ui = true
-[core]
-  pager = "diff-so-fancy | less -R -+FX"
-[diff]
-  compactionHeuristic = true
-[interactive]
-  diffFilter = diff-so-fancy --patch
+[merge]
+  conflictstyle = diff3
 [pull]
   rebase = true
   ff = only
