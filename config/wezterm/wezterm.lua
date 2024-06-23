@@ -10,6 +10,7 @@ config.initial_rows = 128
 config.scrollback_lines = 65536
 config.tab_max_width = 32
 config.use_fancy_tab_bar = false
+config.window_decorations = "RESIZE"
 
 config.colors = {
   tab_bar = {
