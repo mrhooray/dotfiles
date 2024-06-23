@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+brew install \
+	btop \
+	dust \
+	exiftool \
+	fd \
+	fish \
+	fzf \
+	git \
+	git-delta \
+	hammerspoon \
+	lazygit \
+	neovim \
+	nnn \
+	sd \
+	starship \
+	wezterm@nightly
