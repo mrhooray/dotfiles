@@ -1,8 +1,5 @@
 git:
   branchLogCmd: git lf {{branchName}}
   allBranchesLogCmd: git lf
-  paging:
-    colorArg: always
-    useConfig: true
   pull:
     mode: rebase
