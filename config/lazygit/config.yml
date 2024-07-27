@@ -3,3 +3,7 @@ git:
   allBranchesLogCmd: git lf
   pull:
     mode: rebase
+customCommands:
+  - key: "<c-p>"
+    context: "localBranches"
+    command: "git pull --rebase origin master"
