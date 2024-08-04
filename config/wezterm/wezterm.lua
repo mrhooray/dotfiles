@@ -4,6 +4,7 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 config.color_scheme = "catppuccin-macchiato"
+config.enable_scroll_bar = true
 config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.initial_cols = 512
@@ -14,6 +15,7 @@ config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 
 config.colors = {
+  scrollbar_thumb = p.surface0,
   tab_bar = {
     background = p.base,
     active_tab = {
