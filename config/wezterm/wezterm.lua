@@ -48,6 +48,8 @@ config.keys = {
   { mods = "CMD|SHIFT", key = "[", action = act.MoveTabRelative(-1) },
   { mods = "CMD|SHIFT", key = "]", action = act.MoveTabRelative(1) },
   { mods = "CMD|SHIFT", key = "h", action = act.ActivateTabRelative(-1) },
+  { mods = "CMD|SHIFT", key = "j", action = act.ScrollByPage(1) },
+  { mods = "CMD|SHIFT", key = "k", action = act.ScrollByPage(-1) },
   { mods = "CMD|SHIFT", key = "l", action = act.ActivateTabRelative(1) },
   { mods = "CMD|SHIFT", key = "r", action = act.ReloadConfiguration },
   { mods = "CMD|SHIFT", key = "t", action = act.SpawnTab("DefaultDomain") },
