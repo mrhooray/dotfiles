@@ -4,8 +4,8 @@
 vim.g.root_spec = { ".git", "cwd" }
 vim.opt.backup = false
 vim.opt.expandtab = true
+vim.opt.swapfile = false
 vim.opt.shiftwidth = 0
 vim.opt.tabstop = 2
 vim.opt.undofile = false
-vim.opt.updatetime = 320
 vim.opt.writebackup = false
