@@ -45,6 +45,7 @@ config.keys = {
   { mods = "CMD", key = "Enter", action = act.ActivateCopyMode },
   { mods = "CMD", key = "t", action = act.SpawnCommandInNewTab({ cwd = wezterm.home_dir }) },
   { mods = "CMD", key = "n", action = act.SpawnCommandInNewWindow({ cwd = wezterm.home_dir }) },
+  { mods = "CMD", key = "k", action = act.ClearScrollback("ScrollbackAndViewport") },
   { mods = "CMD|SHIFT", key = "[", action = act.MoveTabRelative(-1) },
   { mods = "CMD|SHIFT", key = "]", action = act.MoveTabRelative(1) },
   { mods = "CMD|SHIFT", key = "h", action = act.ActivateTabRelative(-1) },
