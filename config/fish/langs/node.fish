@@ -1,3 +1,7 @@
+if type -q bun
+    fish_add_path ~/.bun/bin
+end
+
 if test -d $XDG_DATA_HOME/fnm
     fish_add_path $XDG_DATA_HOME/fnm
 end
