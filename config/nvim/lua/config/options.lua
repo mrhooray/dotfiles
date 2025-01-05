@@ -10,3 +10,19 @@ vim.opt.swapfile = false
 vim.opt.tabstop = 2
 vim.opt.undofile = false
 vim.opt.writebackup = false
+
+if os.getenv("SSH_TTY") then
+  vim.o.clipboard = "unnamedplus"
+
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
