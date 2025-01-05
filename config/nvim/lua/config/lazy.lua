@@ -14,7 +14,6 @@ require("lazy").setup({
     -- extras
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.kotlin" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
