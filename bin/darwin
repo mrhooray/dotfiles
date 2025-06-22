@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # k&m
-defaults write .GlobalPreferences com.apple.mouse.scaling -1
+defaults write NSGlobalDomain com.apple.mouse.scaling 0.5
+defaults write NSGlobalDomain com.apple.mouse.linear -bool true
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain InitialKeyRepeat -int 25
 defaults write NSGlobalDomain KeyRepeat -int 2
