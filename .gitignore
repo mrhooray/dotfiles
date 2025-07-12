@@ -1,1 +1,42 @@
+# macOS
 .DS_Store
+
+# Claude AI
+.claude/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# SSH keys
+id_rsa
+id_ed25519
+*.pem
+*.key
+*.crt
+
+# API keys and tokens
+*secret*
+*token*
+*credential*
+secrets/
+
+# Local configs
+.local
+.local.*
+local.fish
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+*.tmp
+*.temp
