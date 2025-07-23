@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
 # k&m
 defaults write NSGlobalDomain com.apple.mouse.scaling 0.5
@@ -12,14 +12,15 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads"
+defaults write com.apple.finder FXPreferredViewStyle -string clmv
+defaults write com.apple.finder NewWindowTarget -string PfLo
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/Downloads"
 defaults write com.apple.finder QuitMenuItem -bool false
 defaults write com.apple.finder QLEnableTextSelection -bool true
 defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowRecentTags -bool false
 
 # dock
 defaults write com.apple.dock autohide -bool true
@@ -28,18 +29,22 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 36
 
 # safari
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+if test -d "$HOME/Library/Containers/com.apple.Safari"
+    echo "Safari is sandboxed - preferences cannot be modified externally"
+else
+    defaults write com.apple.Safari AutoFillFromAddressBook -bool false
+    defaults write com.apple.Safari AutoFillPasswords -bool false
+    defaults write com.apple.Safari AutoFillCreditCardData -bool false
+    defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
+    defaults write com.apple.Safari IncludeDevelopMenu -bool true
+    defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+    defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+    defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+end
 
 # misc
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+defaults write NSGlobalDomain AppleShowScrollBars -string WhenScrolling
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -47,16 +52,68 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.dock wvous-bl-corner -int 10
 defaults write com.apple.dock wvous-bl-modifier -int 0
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+defaults write com.apple.menuextra.battery ShowPercent -string YES
 defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  H:mm"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 5
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "${XDG_CONFIG_HOME}/hammerspoon/init.lua"
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
+defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+
+# spotlight
+defaults write com.apple.Spotlight orderedItems -array \
+    '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+    '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+    '{"enabled" = 0;"name" = "CONTACT";}' \
+    '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+    '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+    '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+    '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+    '{"enabled" = 0;"name" = "DIRECTORIES";}' \
+    '{"enabled" = 0;"name" = "FONTS";}' \
+    '{"enabled" = 0;"name" = "IMAGES";}' \
+    '{"enabled" = 0;"name" = "MESSAGES";}' \
+    '{"enabled" = 0;"name" = "MOVIES";}' \
+    '{"enabled" = 0;"name" = "MUSIC";}' \
+    '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+    '{"enabled" = 0;"name" = "PDF";}' \
+    '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+    '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
+    '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+    '{"enabled" = 0;"name" = "SOURCE";}' \
+    '{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
+    '{"enabled" = 0;"name" = "TIPS";}' \
+    '{"enabled" = 0;"name" = "BOOKMARKS";}'
 
 # restart apps
-killall cfprefsd
-killall Dock
-killall Finder
-killall SystemUIServer
-killall Hammerspoon
+for process in cfprefsd ControlCenter Dock Finder SystemUIServer Hammerspoon
+    if pgrep -q $process
+        killall $process
+    else
+        echo "Process $process not running"
+    end
+end
+
+for process in mds
+    if pgrep -q $process
+        sudo killall $process
+    else
+        echo "Process $process not running"
+    end
+end
+
+# set hostname
+echo "Current hostnames:"
+echo "  ComputerName: "(scutil --get ComputerName)
+echo "  LocalHostName: "(scutil --get LocalHostName)
+echo "  HostName: "(scutil --get HostName)
+read -l new_hostname -P "Enter new hostname (or press Enter to skip): "
+if test -n "$new_hostname"
+    sudo scutil --set ComputerName "$new_hostname"
+    sudo scutil --set LocalHostName "$new_hostname"
+    sudo scutil --set HostName "$new_hostname"
+    echo "Hostname set to: $new_hostname"
+else
+    echo "Hostname unchanged"
+end
