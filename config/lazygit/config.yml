@@ -1,8 +1,9 @@
 git:
   branchLogCmd: git lf {{branchName}}
-  allBranchesLogCmd: git lf
   pull:
     mode: rebase
+  allBranchesLogCmds:
+    - git lf
 customCommands:
   - key: "<c-p>"
     context: "localBranches"
