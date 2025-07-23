@@ -2,6 +2,7 @@ theme = catppuccin-macchiato.conf
 
 window-width = 512
 window-height = 512
+window-new-tab-position = end
 quit-after-last-window-closed = true
 
 font-size = 15
