@@ -7,3 +7,6 @@
 
 # Git
 - rebase before create new PR
+  - `git fetch`
+  - `git rebase origin/master`
+  - `git push --force`

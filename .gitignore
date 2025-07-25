@@ -1,7 +1,7 @@
 # macOS
 .DS_Store
 
-# Claude AI
+# Claude Code
 .claude/
 
 # Environment files
