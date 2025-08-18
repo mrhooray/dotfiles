@@ -26,10 +26,10 @@ end)
 ----------------------------------------------------
 -- keymap for arrows
 ----------------------------------------------------
-remap({'alt'}, 'h', press('left'))
-remap({'alt'}, 'j', press('down'))
-remap({'alt'}, 'k', press('up'))
-remap({'alt'}, 'l', press('right'))
+-- remap({ "alt" }, "h", press("left"))
+-- remap({ "alt" }, "j", press("down"))
+-- remap({ "alt" }, "k", press("up"))
+-- remap({ "alt" }, "l", press("right"))
 ----------------------------------------------------
 -- focus on next window
 ----------------------------------------------------
