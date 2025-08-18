@@ -8,15 +8,21 @@ fi
 
 for i in $(find $DOTFILES -mindepth 1 -maxdepth 1 ! -path '*.git' ! -path '*.gitignore' -iname '.*'); do
     target="$HOME/$(basename $i)"
-    echo "Linking: $i -> $target"
-    [ -d "$target" ] && rm -rf "$target"
-    ln -sf $i "$target"
+    if [ -e "$target" ]; then
+        echo "Skipping: $target (already exists)"
+    else
+        echo "Linking: $i -> $target"
+        ln -sf $i "$target"
+    fi
 done
 
 mkdir -p $XDG_CONFIG_HOME
 for i in $(find $DOTFILES/config -mindepth 1 -maxdepth 1 -iname '*'); do
   target="$XDG_CONFIG_HOME/$(basename $i)"
-  echo "Linking: $i -> $target"
-  [ -d "$target" ] && rm -rf "$target"
-  ln -sf $i "$target"
+  if [ -e "$target" ]; then
+      echo "Skipping: $target (already exists)"
+  else
+      echo "Linking: $i -> $target"
+      ln -sf $i "$target"
+  fi
 done
