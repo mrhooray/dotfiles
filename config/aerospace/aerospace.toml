@@ -151,6 +151,10 @@ automatically-unhide-macos-hidden-apps = false
 
 # Window rules
 [[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Music'
 run = 'layout floating'
 
@@ -164,4 +168,8 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.colliderli.iina'
 run = 'layout floating'
