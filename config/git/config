@@ -34,3 +34,5 @@
 [include]
   path = ./catppuccin.gitconfig
   path = ~/.local.gitconfig
+[rebase]
+	updateRefs = true
