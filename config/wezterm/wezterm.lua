@@ -55,6 +55,7 @@ config.keys = {
   { mods = "CMD|SHIFT", key = "r", action = act.ReloadConfiguration },
   { mods = "CMD|SHIFT", key = "t", action = act.SpawnTab("DefaultDomain") },
   { mods = "CTRL|SHIFT", key = "t", action = act.DisableDefaultAssignment },
+  { mods = "SHIFT", key = "Enter", action = act.SendString("\n") },
 }
 
 config.mouse_bindings = {
