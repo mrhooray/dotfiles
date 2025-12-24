@@ -27,29 +27,30 @@ for i in $(find $DOTFILES/config -mindepth 1 -maxdepth 1 -iname '*'); do
     fi
 done
 
-mkdir -p $XDG_CONFIG_HOME/opencode/agent
-opencode_target="$XDG_CONFIG_HOME/opencode/AGENTS.md"
-if [ -e "$opencode_target" ]; then
-    echo "Skipping: $opencode_target (already exists)"
-else
-    echo "Linking: $DOTFILES/AGENTS.md -> $opencode_target"
-    ln -sf $DOTFILES/AGENTS.md "$opencode_target"
-fi
+agents_md() {
+    local base_dir=$1
+    shift
+    local agents=("$@")
 
-mkdir -p $HOME/.claude
-claude_target="$HOME/.claude/CLAUDE.md"
-if [ -e "$claude_target" ]; then
-    echo "Skipping: $claude_target (already exists)"
-else
-    echo "Linking: $DOTFILES/AGENTS.md -> $claude_target"
-    ln -sf $DOTFILES/AGENTS.md "$claude_target"
-fi
+    for agent in "${agents[@]}"; do
+        mkdir -p "$base_dir/$agent"
+        target="$base_dir/$agent/AGENTS.md"
+        if [ -e "$target" ]; then
+            echo "Skipping: $target (already exists)"
+        else
+            echo "Linking: $DOTFILES/AGENTS.md -> $target"
+            ln -sf $DOTFILES/AGENTS.md "$target"
+        fi
+    done
+}
 
-mkdir -p $HOME/.codex
-codex_target="$HOME/.codex/AGENTS.md"
-if [ -e "$codex_target" ]; then
-    echo "Skipping: $codex_target (already exists)"
+agents_md "$XDG_CONFIG_HOME" "opencode" "amp"
+agents_md "$HOME" ".claude" ".codex"
+
+claude_md="$HOME/.claude/CLAUDE.md"
+if [ -e "$claude_md" ]; then
+    echo "Skipping: $claude_md (already exists)"
 else
-    echo "Linking: $DOTFILES/AGENTS.md -> $codex_target"
-    ln -sf $DOTFILES/AGENTS.md "$codex_target"
+    echo "Linking: $HOME/.claude/AGENTS.md -> $claude_md"
+    ln -sf AGENTS.md "$claude_md"
 fi
