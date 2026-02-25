@@ -4,3 +4,4 @@ chmod 0700 $XDG_RUNTIME_DIR
 
 set -gx HOMEBREW_CASK_OPTS --appdir=/Applications
 fish_add_path /opt/homebrew/bin
+
