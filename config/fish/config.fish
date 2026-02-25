@@ -35,7 +35,7 @@ set -gx LSCOLORS Gxfxcxdxbxegedabagacad
 set -gx EDITOR nvim
 set -gx LESSHISTFILE $XDG_STATE_HOME/less/history
 set -gx RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/ripgreprc
-set -gx FZF_DEFAULT_COMMAND 'rg --files-with-matches "."'
+set -gx FZF_DEFAULT_COMMAND 'rg --files'
 set -gx FZF_DEFAULT_OPTS '-m --height 50% --border'
 set -gx NNN_COLORS '#a744b322'
 set -gx NNN_FCOLORS c1e2ff6ff36dccf7c6e3aba1
