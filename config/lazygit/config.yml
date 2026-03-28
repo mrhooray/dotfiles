@@ -2,6 +2,8 @@ git:
   branchLogCmd: git lf {{branchName}}
   pull:
     mode: rebase
+  push:
+    forcePushFlag: force
   allBranchesLogCmds:
     - git lf
 customCommands:
