@@ -9,4 +9,4 @@ git:
 customCommands:
   - key: "<c-p>"
     context: "localBranches"
-    command: "git pull --rebase origin master"
+    command: "git fetch origin && git rebase $(git symbolic-ref --short refs/remotes/origin/HEAD)"
