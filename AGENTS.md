@@ -1,17 +1,12 @@
 # Style
 - **Avoid self-evident comments**
-  ```
-  # Bad: self-evident
-  # Set x to 5
-  x = 5
-  # Return the result
-  return result
-
-  # Good: no comment needed
-  x = 5
-  return result
-  ```
 - **Ensure newline at the end of file**
+- **Optimize code for top-down readability and ease of reasoning**
+  - Prefer entry points first, then core behavior, public/private utilities, etc
+  - When there are distinct groups, use obvious block section headers rather than single-line comments
+  - Keep small one-off helpers inline unless defining them materially improves readability or reuse
+  - Inline pass-through locals unless aliases clarify intent or reduce meaningful duplication
+  - Prefer single source of truth; derive related values instead of repeating them
 
 # Git
 - Commit messages
