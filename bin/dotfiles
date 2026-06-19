@@ -45,7 +45,7 @@ agents_md() {
 }
 
 agents_md "$XDG_CONFIG_HOME" "opencode" "amp"
-agents_md "$HOME" ".claude" ".codex"
+agents_md "$HOME" ".claude" ".codex" ".agents"
 
 claude_md="$HOME/.claude/CLAUDE.md"
 if [ -e "$claude_md" ]; then
